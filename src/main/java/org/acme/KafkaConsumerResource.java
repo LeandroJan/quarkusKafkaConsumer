@@ -24,6 +24,6 @@ public class KafkaConsumerResource {
     @Path("/stream")
     @Produces(MediaType.SERVER_SENT_EVENTS)
     public Multi<String> stream() {
-        return processor;
+        return processor.onItem().transform(item -> "data: " + item + "\n\n");
     }
 }
