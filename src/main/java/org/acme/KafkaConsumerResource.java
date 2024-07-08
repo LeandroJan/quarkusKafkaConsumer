@@ -1,4 +1,5 @@
 package org.acme;
+import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.operators.multi.processors.BroadcastProcessor;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -22,7 +23,7 @@ public class KafkaConsumerResource {
     @GET
     @Path("/stream")
     @Produces(MediaType.SERVER_SENT_EVENTS)
-    public BroadcastProcessor<String> stream() {
+    public Multi<String> stream() {
         return processor;
     }
 }
